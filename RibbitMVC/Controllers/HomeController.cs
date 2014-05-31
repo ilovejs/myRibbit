@@ -21,7 +21,8 @@ namespace RibbitMVC.Controllers
             {
                 return View("Landing", new LoginSignupViewModel());
             }
-            throw new NotImplementedException();
+            var timeline = Ribbits.GetTimelineFor(Security.UserId).ToArray();
+            return View("Timeline", timeline);
         }
 
         [HttpPost]
@@ -72,12 +73,25 @@ namespace RibbitMVC.Controllers
             });
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        [HttpGet]
+        [ChildActionOnly]
         public ActionResult Create()
         {
-            throw new NotImplementedException();
+            return PartialView("_CreateRibbitPartial",
+                new CreateRibbitViewModel());
         }
 
+        [HttpPost]
+        [ChildActionOnly]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(CreateRibbitViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                Ribbits.Create(Security.UserId, model.Status);
+                Response.Redirect("/");
+            }
+            return PartialView("_CreateRibbitPartial", model);
+        }
     }
 }

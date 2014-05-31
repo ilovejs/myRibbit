@@ -14,6 +14,7 @@ namespace RibbitMVC.Controllers
         //protected
         protected IContext DataContext;
         public User CurrentUser { get; private set; }
+        public IRibbitService Ribbits { get; set; }
         public IUserService Users { get; private set; }
         public ISecurityService Security { get; private set; }
 
@@ -21,6 +22,7 @@ namespace RibbitMVC.Controllers
         {
             DataContext = new Context();
             Users = new UserService(DataContext);
+            Ribbits = new RibbitService(DataContext);
             Security = new SecurityService(Users);
             CurrentUser = Security.GetCurrentUser();
         }
