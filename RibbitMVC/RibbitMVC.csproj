@@ -158,6 +158,7 @@
     <Content Include="gfx\bg-footer.png" />
     <Content Include="gfx\bg-header.png" />
     <Content Include="gfx\bg.png" />
+    <Content Include="gfx\favicon.ico" />
     <Content Include="gfx\frog.jpg" />
     <Content Include="gfx\logo-nettuts.png" />
     <Content Include="gfx\logo.png" />
@@ -184,9 +185,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="gfx\Thumbs.db" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\Landing.cshtml" />
@@ -222,9 +220,9 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerPort>13907</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:61614/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

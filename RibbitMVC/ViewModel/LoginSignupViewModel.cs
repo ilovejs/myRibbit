@@ -9,5 +9,11 @@ namespace RibbitMVC.ViewModel
     {
         public LoginViewModel Login { get; set; }
         public SignupViewModel Signup { get; set; }
+
+//        public LoginSignupViewModel(LoginViewModel login = null, SignupViewModel signup = null)
+//        {
+//            login = login ?? new LoginViewModel();
+//            signup = signup ?? new SignupViewModel();
+//        }
     }
 }

@@ -1,7 +1,9 @@
+@using System.Activities.Expressions
 <!DOCTYPE html>
 <html>
 <head>
     <link rel="stylesheet/less" href="/style.less">
+    <link ref="shortcut icon" href="/gfx/favicon.ico"/>
     <script src="/less.js"></script>
 </head>
 <body>
@@ -25,6 +27,7 @@
                 }
             }
             else {
+                //cast to LoginSignUpVM, it can handle model that is not LoginSignupVM
                 var model = (Model as LoginSignupViewModel) ?? new LoginSignupViewModel();
                 
                 @Html.Partial("_LoginPartial", model);   

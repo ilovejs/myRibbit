@@ -19,7 +19,7 @@ namespace RibbitMVC.Controllers
             // Security
             if (!Security.IsAuthenticated)
             {
-                return View("Landing", new SignupViewModel());
+                return View("Landing", new LoginSignupViewModel());
             }
             throw new NotImplementedException();
         }
