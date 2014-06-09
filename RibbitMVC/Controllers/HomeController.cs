@@ -80,7 +80,7 @@ namespace RibbitMVC.Controllers
             return PartialView("_CreateRibbitPartial",
                 new CreateRibbitViewModel());
         }
-
+        //why [ChildActionOnly]
         [HttpPost]
         [ChildActionOnly]
         [ValidateAntiForgeryToken]

@@ -23,6 +23,7 @@ namespace RibbitMVC.Controllers
             DataContext = new Context();
             Users = new UserService(DataContext);
             Ribbits = new RibbitService(DataContext);
+
             Security = new SecurityService(Users);
             CurrentUser = Security.GetCurrentUser();
         }

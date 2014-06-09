@@ -14,33 +14,27 @@ namespace RibbitMVC.Models
         public string Username { get; set; }
         public string Password { get; set; }
         public DateTime DateCreated { get; set; }
+        
         //fk
         public int UserProfileId { get; set; }
+        
         //lazy loaded Nav prop
         [ForeignKey("UserProfileId")]
         public virtual UserProfile Profile { get; set; }
     
-        //api: user.Ribbits
-        private ICollection<Ribbit> _ribbits; 
-        public virtual ICollection<Ribbit> Ribbits { 
-            get { return _ribbits ?? (_ribbits = new Collection<Ribbit>()); }  //if null
-            set { _ribbits = value; }
+        
+        private ICollection<Message> _sentmessages;
+        public virtual ICollection<Message> SentMessages
+        {
+            get { return _sentmessages ?? (_sentmessages = new Collection<Message>()); }  //if null
+            set { _sentmessages = value; }
         }
- 
-        //following
-        private ICollection<User> _followings;
-        public virtual ICollection<User> Followings
-        {
-            get { return _followings ?? ( _followings = new Collection<User>()); }  //if null
-            set { _followings = value; }
-        } 
 
-        //followers
-        private ICollection<User> _followers;
-        public virtual ICollection<User> Followers
+        private ICollection<Message> _receivedmessages;
+        public virtual ICollection<Message> ReceivedMessages
         {
-            get { return _followers ?? (_followers = new Collection<User>()); }  //if null
-            set { _followers = value; }
+            get { return _receivedmessages ?? (_receivedmessages = new Collection<Message>()); }  //if null
+            set { _receivedmessages = value; }
         } 
     }
 }

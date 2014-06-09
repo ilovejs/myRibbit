@@ -39,14 +39,17 @@ namespace RibbitMVC.Services
             };
 
             _ribbits.Create(ribbit);
+            //TODO: this is easy to miss, be careful
             _context.SaveChanges();
             return ribbit;
         }
 
         public IEnumerable<Ribbit> GetTimelineFor(int userId)
         {
-            return _ribbits.FindAll(r => r.Author.Followers.Any(f => f.Id == userId) || r.AuthorId == userId)
-                .OrderByDescending(r => r.DateCreated);
+            //if user is ribbit's author's follower OR ribbit's author
+            return _ribbits.FindAll(r => r.Author.Followers.Any(f => f.Id == userId) || 
+                                         r.AuthorId == userId)
+                           .OrderByDescending(r => r.DateCreated);
         }
     }
 }

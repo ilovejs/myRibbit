@@ -12,6 +12,6 @@ namespace RibbitMVC.Models
         public string Name { get; set; }
         public string WebsiteUrl { get; set; }
         public string Bio { get; set; }
-
+        
     }
 }
