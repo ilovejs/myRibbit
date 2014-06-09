@@ -9,6 +9,7 @@ namespace RibbitMVC.Data
 {
     public interface IUserRepository: IRepository<User>
     {
+        //load profile up-front, get rid of lazy loading
         IQueryable<User> All(bool includeProfile);
         void CreateFollower(string username, User follower);
         void DeleteFollower(string username, User follower);

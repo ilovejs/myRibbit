@@ -1,14 +1,15 @@
 ﻿@model CreateRibbitViewModel
 
 <h1>Create a Ribbit</h1>
-
+<!--model validation-->
 @if (!ViewData.ModelState.IsValid)
 {
     <div class="flash error">
         @Html.ValidationMessageFor(m => m.Status)
     </div>
 }
-
+<!--render as Child Action, u cann't make request for child action. Thus, can be used in 
+    other part of application-->
 <p>
     @using (var frm = Html.BeginForm("index", "home"))
     {

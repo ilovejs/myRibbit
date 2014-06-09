@@ -29,20 +29,31 @@ namespace RibbitMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Follow(string username)
         {
-            throw new NotImplementedException(username + "followed");
+            if (!Security.IsAuthenticated)
+            {
+                RedirectToAction("Index");
+            }
+            Users.Follow(username, Security.GetCurrentUser());
+            return GoToReferrer();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Unfollow(string username)
         {
-            throw new NotImplementedException(username + "unfollowed");
+            if (!Security.IsAuthenticated)
+            {
+                RedirectToAction("Index");
+            }
+            Users.Unfollow(username, Security.GetCurrentUser());
+            return GoToReferrer();
         }
 
         //all registed users list
         public ActionResult Profiles()
         {
-            throw new NotImplementedException();
+            var users = Users.All(true); //want profiles
+            return View(users);
         }
 
         public ActionResult Followers()
@@ -73,6 +84,7 @@ namespace RibbitMVC.Controllers
             });
         }
 
+        //no direct request for this action method
         [HttpGet]
         [ChildActionOnly]
         public ActionResult Create()
@@ -89,6 +101,7 @@ namespace RibbitMVC.Controllers
             if (ModelState.IsValid)
             {
                 Ribbits.Create(Security.UserId, model.Status);
+                //this redirect is different from other? because of Child action?
                 Response.Redirect("/");
             }
             return PartialView("_CreateRibbitPartial", model);

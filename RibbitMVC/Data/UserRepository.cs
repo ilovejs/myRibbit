@@ -14,17 +14,33 @@ namespace RibbitMVC.Data
 
         public IQueryable<User> All(bool includeProfile)
         {
-            throw new NotImplementedException();
+            //load profile OR call empty All() from EfRepository 
+            return includeProfile ? DbSet.Include(u => u.Profile).AsQueryable() : All();
         }
 
         public void CreateFollower(string username, User follower)
         {
-            throw new NotImplementedException();
+            var user = GetBy(username);
+            DbSet.Attach(follower);
+            user.Followers.Add(follower);
+
+            if (!ShareContext)
+            {
+                Context.SaveChanges();
+            }
         }
 
         public void DeleteFollower(string username, User follower)
         {
-            throw new NotImplementedException();
+            var user = GetBy(username);
+            DbSet.Attach(follower);
+            //instead, call Remove
+            user.Followers.Remove(follower);
+
+            if (!ShareContext)
+            {
+                Context.SaveChanges();
+            }
         }
 
         //get user by id

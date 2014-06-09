@@ -1,0 +1,22 @@
+﻿@model RibbitMVC.ViewModel.BuddiesViewModel
+
+@{
+    ViewBag.Title = "Buddies";
+}
+<!--can create ribbit-->
+@section RightPanel
+{
+    @{
+        Html.RenderAction("Create", "Home");
+    }
+}
+
+@Html.Partial("_UserPartial", Model.User)
+
+<div class="panel left">
+    <h1>Ribbit Buddies</h1>
+    @foreach (var buddy in Model.Buddies)
+    {
+        @Html.Partial("_UserProfilePartial", buddy)
+    }
+</div>

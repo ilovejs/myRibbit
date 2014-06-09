@@ -65,6 +65,12 @@ namespace RibbitMVC
                 url: "unfollow",
                 defaults: new { controller = "home", action = "unfollow" }
             );
+            
+            routes.MapRoute(
+                name: "Profiles",
+                url: "profiles",
+                defaults: new { controller = "home", action = "profiles" }
+            );
 
             // {username}/{action}
             routes.MapRoute(

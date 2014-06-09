@@ -16,12 +16,13 @@
                 <nav>
                     @Html.RouteLink("Followers", "Followers")
                     @Html.RouteLink("Following", "Following")
-@*                    @Html.RouteLink("Profiles", "Profiles")*@
+                    @Html.RouteLink("Profiles", "Profiles")
                     @Html.RouteLink("Edit Profile", "ProfileDefault")
                 </nav>
                 
                 using (var logoutForm = Html.BeginForm("Logout", "Account"))
                 {
+                    @Html.AntiForgeryToken()
                     <input type="submit" value="Log Out" />
                 }
             }
@@ -41,15 +42,15 @@
                     @Html.ValidationSummary()
                 </div>
             }
-
-            @RenderBody()
-
+            
             @if (IsSectionDefined("RightPanel"))
             {
                 <div class="panel right">
                     @RenderSection("RightPanel")
                 </div>
             }
+            
+            @RenderBody()
 
             @if (IsSectionDefined("LeftPanel"))
             {

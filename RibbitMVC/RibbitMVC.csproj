@@ -125,9 +125,11 @@
     <Compile Include="Data\EfRepository.cs" />
     <Compile Include="Data\IContext.cs" />
     <Compile Include="Data\IRibbitRepository.cs" />
+    <Compile Include="Data\IUserProfileRepository.cs" />
     <Compile Include="Data\IUserRepository.cs" />
     <Compile Include="Data\RibbitDatabase.cs" />
     <Compile Include="Data\RibbitRepository.cs" />
+    <Compile Include="Data\UserProfileRepository.cs" />
     <Compile Include="Data\UserRepository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -141,16 +143,20 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\IRibbitService.cs" />
     <Compile Include="Services\ISecurityService.cs" />
+    <Compile Include="Services\IUserProfileService.cs" />
     <Compile Include="Services\IUserService.cs" />
     <Compile Include="Services\RibbitService.cs" />
     <Compile Include="Services\SecurityService.cs" />
+    <Compile Include="Services\UserProfileService.cs" />
     <Compile Include="Services\UserService.cs" />
     <Compile Include="Ui\RibbitViewPage.cs" />
     <Compile Include="ViewModel\BuddiesViewModel.cs" />
     <Compile Include="ViewModel\CreateRibbitViewModel.cs" />
+    <Compile Include="ViewModel\EditProfileViewModel.cs" />
     <Compile Include="ViewModel\LoginSignupViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\SignupViewModel.cs" />
+    <Compile Include="ViewModel\UserViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -170,6 +176,12 @@
     <Content Include="gfx\user3.png" />
     <Content Include="Global.asax" />
     <Content Include="less.js" />
+    <Content Include="style.css">
+      <DependentUpon>style.less</DependentUpon>
+    </Content>
+    <Content Include="style.min.css">
+      <DependentUpon>style.less</DependentUpon>
+    </Content>
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -198,7 +210,7 @@
     <Content Include="style.less" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Home\Buddies.cshtml" />
+    <Content Include="Views\Shared\Buddies.cshtml" />
     <Content Include="Views\Home\Profiles.cshtml" />
     <Content Include="Views\Home\Timeline.cshtml" />
   </ItemGroup>
@@ -208,6 +220,18 @@
   <ItemGroup>
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_RibbitPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\User\UserProfile.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_UserPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_FollowButtonPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Profile\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

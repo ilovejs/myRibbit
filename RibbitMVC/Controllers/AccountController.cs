@@ -65,8 +65,8 @@ namespace RibbitMVC.Controllers
             }
 
             Security.Login(login.Username);
-
-            return RedirectToAction("Index", "Home");
+            //lesson 17 teach you this.
+            return GoToReferrer();
         }
 
         [HttpPost]
@@ -75,7 +75,7 @@ namespace RibbitMVC.Controllers
         {
             Security.Logout();
 
-            throw new NotImplementedException();
+            return RedirectToAction("Index", "Home");
         }
 
     }

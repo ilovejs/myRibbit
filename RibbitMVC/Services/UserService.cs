@@ -20,6 +20,7 @@ namespace RibbitMVC.Services
 
         public IEnumerable<User> All(bool includeProfile)
         {
+            //consume api from UserRepository
             return _users.All(includeProfile).ToArray();
         }
 

@@ -3,25 +3,12 @@
 <div class="ribbitWrapper">
     <img class="avatar" src="http://www.gravatar.com/avatar/@Model.Profile.GetEmailHash()">
     <span class="name">
-        @Html.RouteLink(Model.Profile.Name, "UserDefault", new { controller = "user", username = Model.Username, action = "index" })
+        <!--this worth noticing-->
+        @Html.RouteLink(Model.Profile.Name, "UserDefault", new { controller = "User", username = Model.Username, action = "Index" })
     </span>@@@Model.Username
-
-    @if (Security.IsAuthenticated && Model.Id != Security.UserId)
-    {
-        var isFollowing = CurrentUser.Followings.Any(u => u.Id == Model.Id);
-
-        var routeName = isFollowing ? "Unfollow" : "Follow";
-
-        using (var followForm = Html.BeginRouteForm(routeName, new { controller = "home", action = routeName }))
-        {
-        @Html.HiddenFor(u => u.Username)
-        @Html.AntiForgeryToken()
-
-        <input type="submit" value="@routeName" />
-        }
-
-    }
-
+    <!--profile doesn't belongs to current user-->
+    @Html.Partial("_FollowButtonPartial", Model)
+    <!--bio-->
     <p>
         @Model.Profile.Bio
     </p>

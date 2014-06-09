@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using RibbitMVC.ViewModel;
 
 namespace RibbitMVC.Controllers
 {
@@ -13,14 +14,34 @@ namespace RibbitMVC.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            if (!Security.IsAuthenticated)
+                return RedirectToAction("Index", "Home");
+
+            var profile = Profiles.GetBy(CurrentUser.UserProfileId);
+            return View(new EditProfileViewModel()
+            {
+                Bio = profile.Bio,
+                Email = profile.Email,
+                Id = profile.Id,
+                Name = profile.Name,
+                Website = profile.WebsiteUrl
+            });
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit()
+        public ActionResult Edit(EditProfileViewModel model)
         {
-            throw new NotImplementedException();
+            if (!Security.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            if (!ModelState.IsValid)
+            {
+                return View("Index", model);
+            }
+            Profiles.Update(model);
+            return RedirectToAction("Index");
         }
 
     }
